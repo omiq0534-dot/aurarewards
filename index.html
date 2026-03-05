@@ -5,32 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura Rewards | Play Games. Earn Coins. Get Rewards.</title>
-    <!-- Preconnect to Google Fonts -->
+    <!-- Google Fonts for Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --space-black: #05050A;
-            --dark-purple: #1a0b2e;
-            --neon-purple: #b026ff;
-            --neon-cyan: #00f3ff;
+            --bg-color: #050510;
+            /* Deepest midnight blue */
+            --bg-gradient: radial-gradient(circle at top right, rgba(218, 165, 32, 0.15), #050510 70%);
+            --gold-primary: #FFD700;
+            --gold-secondary: #DAA520;
+            --gold-accent: #FDB931;
             --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(218, 165, 32, 0.2);
+            --glass-glow: rgba(255, 215, 0, 0.15);
+            --text-main: #ffffff;
+            --text-muted: #b0afcc;
+            --button-bg: linear-gradient(135deg, #DAA520, #FFD700);
+            --button-hover: linear-gradient(135deg, #FFD700, #FDB931);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, var(--space-black) 0%, var(--dark-purple) 100%);
-            color: white;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
             min-height: 100vh;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
             position: relative;
         }
 
@@ -43,86 +55,200 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
+            background:
+                transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><circle cx="50" cy="50" r="1.5" fill="%23fff" opacity="0.8"/><circle cx="200" cy="150" r="2" fill="%23fff" opacity="0.6"/><circle cx="100" cy="250" r="1.2" fill="%23fff" opacity="0.9"/><circle cx="280" cy="80" r="0.8" fill="%23fff" opacity="0.5"/><circle cx="20" cy="280" r="2.5" fill="%23FFD700" opacity="0.7"/><circle cx="250" cy="260" r="1" fill="%23DAA520" opacity="0.8"/></svg>') repeat;
+            animation: moveStars 80s linear infinite;
+            opacity: 0.4;
         }
 
-        .star {
-            position: absolute;
-            background: white;
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: -1000px 500px;
+            }
+        }
+
+        /* Nebula Glow */
+        .nebula {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
             border-radius: 50%;
-            animation: twinkle infinite ease-in-out;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: pulseNebula 8s ease-in-out infinite alternate;
         }
 
-        @keyframes twinkle {
+        .nebula-1 {
+            top: -20%;
+            left: -10%;
+            background: radial-gradient(circle, var(--gold-secondary), transparent 70%);
+        }
 
-            0%,
-            100% {
+        .nebula-2 {
+            bottom: -20%;
+            right: -10%;
+            background: radial-gradient(circle, var(--gold-accent), transparent 70%);
+            animation-duration: 12s;
+        }
+
+        @keyframes pulseNebula {
+            0% {
+                transform: scale(1);
                 opacity: 0.2;
-                transform: scale(0.8);
             }
 
-            50% {
-                opacity: 1;
+            100% {
                 transform: scale(1.1);
-                box-shadow: 0 0 5px white;
+                opacity: 0.4;
             }
-
-            /* replaced drop-shadow with box-shadow for performance */
         }
 
-        /* Container */
+        /* Main Container */
         .container {
             position: relative;
             z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ffffff, var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(253, 185, 49, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--gold-accent);
+            opacity: 0.5;
+            animation: pulseIconBorder 2s infinite;
+        }
+
+        @keyframes pulseIconBorder {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            margin-top: 6rem;
-            margin-bottom: 4rem;
+            margin: 4rem 0 3rem;
+            position: relative;
+            animation: zoomIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
         }
 
-        .title {
-            font-size: 5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
-            background: linear-gradient(to right, #fff, #e0e0e0);
-            -webkit-background-clip: text;
-            text-shadow: 0 0 20px rgba(176, 38, 255, 0.8),
-                0 0 40px rgba(176, 38, 255, 0.6),
-                0 0 60px rgba(0, 243, 255, 0.4);
-            margin-bottom: 1rem;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #d0d0e0;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 3.5rem;
-        }
-
-        @keyframes glow {
+        @keyframes zoomIn {
             from {
-                text-shadow: 0 0 20px rgba(176, 38, 255, 0.8),
-                    0 0 40px rgba(176, 38, 255, 0.6);
+                opacity: 0;
+                transform: scale(0.9);
             }
 
             to {
-                text-shadow: 0 0 25px rgba(176, 38, 255, 1),
-                    0 0 50px rgba(176, 38, 255, 0.8),
-                    0 0 80px rgba(0, 243, 255, 0.6);
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+            background: linear-gradient(to bottom, #ffffff 40%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
+            animation: floatText 5s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes floatText {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
             }
         }
 
@@ -131,24 +257,22 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(176, 38, 255, 0.15);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
+            gap: 12px;
             padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            background: var(--button-bg);
             border-radius: 50px;
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3),
-                inset 0 0 10px rgba(0, 243, 255, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: pulse-border 2s infinite;
             position: relative;
             overflow: hidden;
+            letter-spacing: 1.5px;
+            z-index: 2;
             cursor: pointer;
         }
 
@@ -157,401 +281,657 @@
             position: absolute;
             top: 0;
             left: -100%;
-            width: 50%;
+            width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
             transform: skewX(-20deg);
-            transition: all 0.7s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: var(--button-hover);
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 35px rgba(253, 185, 49, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
+            color: #050510;
         }
 
         .download-btn:hover::before {
             left: 150%;
         }
 
-        .download-btn:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6),
-                inset 0 0 20px rgba(0, 243, 255, 0.3);
-            background: rgba(176, 38, 255, 0.3);
-            border-color: #fff;
+        .download-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            animation: bounceIcon 2s infinite;
         }
 
-        @keyframes pulse-border {
-            0% {
-                box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        @keyframes bounceIcon {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
             }
 
-            50% {
-                box-shadow: 0 0 30px rgba(0, 243, 255, 0.7), 0 0 15px rgba(176, 38, 255, 0.6);
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .pulse-ring {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            z-index: -1;
+            animation: pulseRing 2.5s infinite;
+            border: 2px solid var(--gold-primary);
+            pointer-events: none;
+        }
+
+        .download-btn:hover .pulse-ring {
+            border-color: var(--gold-accent);
+            animation: pulseRingGold 2.5s infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
             }
 
             100% {
-                box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulseRingGold {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0;
             }
         }
 
         /* Trust Badge */
-        .trust-badge {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #a0a0b0;
+        .trust-badge-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            margin-top: 2.5rem;
+            animation: fadeInUp 1.2s ease-out;
+            width: 100%;
         }
 
-        .trust-badge span {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trust-badge {
             display: flex;
             align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
+            gap: 12px;
+            color: var(--gold-accent);
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: rgba(253, 185, 49, 0.05);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            border: 1px solid rgba(253, 185, 49, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+            /* Ensure text wraps cleanly */
+            justify-content: center;
         }
 
-        .trust-badge span::before {
-            content: '✓';
-            color: var(--neon-cyan);
-            margin-right: 6px;
-            font-weight: bold;
-            text-shadow: 0 0 5px var(--neon-cyan);
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
+        }
+
+        .trust-divider {
+            color: rgba(255, 255, 255, 0.2);
+            margin: 0 5px;
         }
 
         /* Features Grid */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
+            margin: 4rem 0 5rem;
             width: 100%;
-            margin-top: 4rem;
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
-        .feature-card {
+        .feature-item-wrapper {
+            position: relative;
+            animation: fadeUpIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-item-wrapper:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-item-wrapper:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-item-wrapper:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeUpIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-right: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 24px;
             padding: 3rem 2rem;
             text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            animation: float 6s ease-in-out infinite;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: floatCard 6s ease-in-out infinite;
         }
 
-        /* Glowing border effect inside card */
-        .feature-card::after {
+        .glass-card:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .glass-card:nth-child(3) {
+            animation-delay: 3s;
+        }
+
+        .glass-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
             opacity: 0;
-            border-radius: 24px;
-            box-shadow: inset 0 0 20px rgba(176, 38, 255, 0.5);
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
             pointer-events: none;
         }
 
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(176, 38, 255, 0.15), inset 0 0 0 1px rgba(0, 243, 255, 0.3);
-            border-color: rgba(176, 38, 255, 0.4);
+        .feature-item-wrapper:hover .glass-card {
+            transform: translateY(-20px) rotateX(5deg) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--glass-glow);
+            z-index: 10;
         }
 
-        .feature-card:hover::after {
+        .feature-item-wrapper:hover .glass-card::before {
             opacity: 1;
         }
 
-        .feature-card:nth-child(1) {
-            animation-delay: 0s;
+        /* Dynamic Border Highlight */
+        .card-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, var(--gold-accent), var(--gold-primary)) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
         }
 
-        .feature-card:nth-child(2) {
-            animation-delay: 1.5s;
+        .feature-item-wrapper:hover .card-highlight {
+            opacity: 1;
         }
 
-        .feature-card:nth-child(3) {
-            animation-delay: 3s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .feature-icon-wrapper {
+        .card-icon {
             width: 80px;
             height: 80px;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(0, 245, 255, 0.15));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(176, 38, 255, 0.1), rgba(0, 243, 255, 0.1));
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+            transform: translateZ(30px);
         }
 
-        .feature-icon-wrapper::before {
+        .feature-item-wrapper:hover .card-icon {
+            transform: translateZ(40px) scale(1.1);
+        }
+
+        .card-icon::after {
             content: '';
             position: absolute;
-            inset: -5px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            border: 1px dashed rgba(0, 243, 255, 0.4);
-            animation: spin 10s linear infinite;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+            animation: rotateDashed 10s linear infinite;
         }
 
-        @keyframes spin {
+        .feature-item-wrapper:hover .card-icon::after {
+            border-color: var(--gold-accent);
+            animation-duration: 4s;
+        }
+
+        @keyframes rotateDashed {
+            0% {
+                transform: rotate(0deg);
+            }
+
             100% {
                 transform: rotate(360deg);
             }
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+        .card-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #fff;
+            stroke-width: 1.5;
+            fill: none;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+            transition: stroke 0.3s ease;
         }
 
-        .feature-title {
+        .feature-item-wrapper:hover .card-icon svg {
+            stroke: var(--gold-accent);
+            filter: drop-shadow(0 0 12px var(--gold-accent));
+        }
+
+        .glass-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transform: translateZ(20px);
+            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .feature-desc {
-            color: #a0a0b0;
-            line-height: 1.7;
+        .feature-item-wrapper:hover h3 {
+            color: #fff;
+            text-shadow: 0 0 15px rgba(157, 78, 221, 0.8);
+        }
+
+        .glass-card p {
+            color: var(--text-muted);
             font-size: 1.05rem;
-            font-weight: 300;
+            line-height: 1.7;
+            transform: translateZ(10px);
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Footer */
         footer {
-            margin-top: 6rem;
-            padding: 2rem 0;
-            text-align: center;
+            margin-top: auto;
             width: 100%;
+            text-align: center;
+            padding: 2.5rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(to top, rgba(5, 1, 11, 0.9), transparent);
+            z-index: 1;
             position: relative;
-            z-index: 10;
         }
 
         .privacy-link {
-            color: #606070;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .privacy-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold-accent);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--gold-accent);
         }
 
         .privacy-link:hover {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+            color: #fff;
+            text-shadow: 0 0 10px rgba(253, 185, 49, 0.5);
         }
 
-        /* Mobile Responsiveness (itel A50 & others) */
-        @media (max-width: 768px) {
+        .privacy-link:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .features {
+                gap: 1.5rem;
+            }
+
+            .glass-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+
+            .features {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 1.5rem;
+            }
+
             .hero {
-                margin-top: 4rem;
-                margin-bottom: 3rem;
+                margin: 2.5rem 0;
             }
 
-            .title {
+            .hero h1 {
                 font-size: 3rem;
-                letter-spacing: 2px;
-                animation: none;
-                /* Disable text glow animation to save battery/reduce lag */
-                text-shadow: 0 0 10px rgba(176, 38, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.4);
+                margin-bottom: 1rem;
             }
 
-            .subtitle {
-                font-size: 1.1rem;
-                padding: 0 1rem;
+            .hero p {
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
+                padding: 0;
             }
 
             .download-btn {
-                padding: 1rem 2rem;
-                font-size: 0.95rem;
-                width: 90%;
-                animation: none;
-                /* Disable rapid pulse on mobile */
-                box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-                /* Static shadow */
-            }
-
-            /* Remove heavy backdrop-filters on mobile */
-            .download-btn,
-            .feature-card,
-            .trust-badge span {
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                background: rgba(255, 255, 255, 0.08);
-                /* Fallback solid color */
+                padding: 1rem 1.8rem;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 350px;
+                white-space: normal;
+                text-align: center;
             }
 
             .trust-badge {
                 flex-direction: column;
+                text-align: center;
                 gap: 8px;
+                padding: 1rem;
+                font-size: 0.85rem;
             }
 
-            .trust-badge span {
-                width: 100%;
-                justify-content: center;
+            .trust-divider {
+                display: none;
             }
 
             .features {
-                margin-top: 3rem;
-                gap: 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin: 3rem 0;
             }
 
-            .feature-card {
-                padding: 2rem 1.5rem;
-                animation: none;
-                /* Disable floating on mobile */
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            /* Reduce 3D effect on mobile for better touch experience */
+            .feature-item-wrapper:hover .glass-card {
+                transform: translateY(-10px);
             }
 
-            .feature-card:hover {
-                transform: none;
-                /* Disable transform on hover for mobile */
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-                border-color: var(--glass-border);
+            .card-icon {
+                width: 70px;
+                height: 70px;
             }
 
-            .feature-card::after {
-                display: none;
-                /* Disable inner glow element on mobile */
+            .glass-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Specific tweaks for itel A50 screen size (around 360px width) */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .feature-icon-wrapper::before {
-                animation: none;
-                /* Disable rotation animation on mobile */
-                border: 1px dashed rgba(0, 243, 255, 0.4);
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .download-btn {
+                font-size: 0.95rem;
+                padding: 1rem 1.2rem;
+            }
+
+            .glass-card {
+                padding: 2rem 1.2rem;
+            }
+
+            nav {
+                padding: 1rem 0;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="stars" id="stars"></div>
+
+    <!-- Background Elements -->
+    <div class="stars"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
 
     <div class="container">
-        <div class="hero">
-            <h1 class="title">Aura Rewards</h1>
-            <p class="subtitle">Play Games. Earn Coins. Get Rewards.</p>
-
-            <a href="https://www.mediafire.com/file/1wdzg23ez0ktwj3/AuraReward+V5.apk/file" target="_blank"
-                class="download-btn" id="downloadBtn">
-                DOWNLOAD APK FROM MEDIAFIRE
-            </a>
-
-            <div class="trust-badge">
-                <span>100% Safe</span>
-                <span>Official Developer Build</span>
-                <span>No Viruses</span>
-            </div>
-        </div>
-
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <div class="feature-icon">🎮</div>
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 22 22 22"></polygon>
+                        <path d="M12 2v20"></path>
+                    </svg>
                 </div>
-                <h3 class="feature-title">Play Zone</h3>
-                <p class="feature-desc">Earn coins by playing top titles like BGMI and Free Fire. The more you play, the
-                    more you earn!</p>
+                Aura Rewards
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <main class="hero">
+            <h1>Aura Rewards</h1>
+            <p>Play Games. Earn Coins. Get Rewards.</p>
+
+            <div style="position: relative; display: inline-block; width: 100%; max-width: 400px;">
+                <div class="pulse-ring"></div>
+                <!-- Placeholder Link for Mediafire -->
+                <a href="https://www.mediafire.com/file/9s5jg2xgzvbcn99/AuraReward+V7.apk/file" class="download-btn"
+                    target="_blank" rel="noopener noreferrer">
+                    <svg class="download-icon" viewBox="0 0 24 24">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>DOWNLOAD AURA REWARDS V7</span>
+                </a>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <div class="feature-icon">📦</div>
+            <div class="trust-badge-container">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4" stroke="#05010b" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" fill="none"></path>
+                    </svg>
+                    <span>100% Safe</span>
+                    <span class="trust-divider">|</span>
+                    <span>Official Developer Build</span>
+                    <span class="trust-divider">|</span>
+                    <span>No Viruses</span>
                 </div>
-                <h3 class="feature-title">Zero-G Chest</h3>
-                <p class="feature-desc">Unlock daily rewards. Claim your highly rewarding Zero-G Chest every 24 hours.
-                </p>
             </div>
+        </main>
 
-            <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <div class="feature-icon">🚀</div>
+        <!-- Features Section -->
+        <section class="features">
+            <!-- Feature 1 -->
+            <div class="feature-item-wrapper">
+                <div class="glass-card">
+                    <div class="card-highlight"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Play Zone</h3>
+                    <p>Dive into your favorite games like BGMI and Free Fire. The more you play, the more you earn.</p>
                 </div>
-                <h3 class="feature-title">Task Orbit</h3>
-                <p class="feature-desc">Complete simple tasks and watch ads to boost your coin balance into the
-                    stratosphere.</p>
             </div>
-        </div>
 
-        <footer>
-            <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
-        </footer>
+            <!-- Feature 2 -->
+            <div class="feature-item-wrapper">
+                <div class="glass-card">
+                    <div class="card-highlight"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Zero-G Chest</h3>
+                    <p>Unlock daily surprises. Claim your mystery chest every 24 hours to boost your balance instantly.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-item-wrapper">
+                <div class="glass-card">
+                    <div class="card-highlight"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2v20"></path>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Task Orbit</h3>
+                    <p>Complete simple missions and watch short ads in orbit to accumulate coins effortlessly.</p>
+                </div>
+            </div>
+        </section>
+
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <a href="#privacy-policy" class="privacy-link">Privacy Policy</a>
+    </footer>
+
+    <!-- Script for 3D Tilt Effect on Desktop -->
     <script>
-        // Generate Star Field
-        const starsContainer = document.getElementById('stars');
-        const numStars = window.innerWidth < 768 ? 20 : 100; // Drastically fewer stars on mobile for performance
+        // Only apply 3D tilt on devices that support hover (desktop)
+        if (window.matchMedia("(hover: hover)").matches) {
+            document.querySelectorAll('.glass-card').forEach(card => {
+                const wrapper = card.closest('.feature-item-wrapper');
+                if (!wrapper) return;
 
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
+                wrapper.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
 
-            // Random position
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
 
-            // Random size connecting to depth
-            const size = Math.random() * 2.5 + 0.5;
+                    // Reduced effect for subtle smooth behavior
+                    const rotateX = ((y - centerY) / centerY) * -6;
+                    const rotateY = ((x - centerX) / centerX) * 6;
 
-            // Random animation delay and duration
-            const delay = Math.random() * 5;
-            const duration = Math.random() * 4 + 2;
+                    card.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                });
 
-            star.style.left = `${x}vw`;
-            star.style.top = `${y}vh`;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.animationDelay = `${delay}s`;
-            star.style.animationDuration = `${duration}s`;
-
-            // Randomize star color slightly
-            const colors = ['#ffffff', '#e0f7fa', '#f3e5f5'];
-            star.style.background = colors[Math.floor(Math.random() * colors.length)];
-            star.style.opacity = Math.random() * 0.8 + 0.2;
-
-            starsContainer.appendChild(star);
+                wrapper.addEventListener('mouseleave', () => {
+                    card.style.transform = ''; // return to original CSS state
+                });
+            });
         }
-
-        // Add interaction for download button
-        const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.addEventListener('click', function (e) {
-            // Uncomment and set your link here:
-            // window.location.href = 'https://www.mediafire.com/file/1wdzg23ez0ktwj3/AuraReward+V5.apk/file';
-
-            // Added small click effect
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 100);
-        });
     </script>
 </body>
 
