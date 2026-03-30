@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-github-username.github.io/your-repo-name/sitemap.xml
+Sitemap: https://omiq0534-dot.github.io/aurarewards/sitemap.xml
