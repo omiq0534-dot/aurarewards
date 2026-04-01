@@ -4,816 +4,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Rewards | Play. Earn. Elevate.</title>
+    <title>Aura Rewards V11 | Play. Earn. Win.</title>
     
-    <!-- Professional SEO Meta Tags -->
-    <meta name="description" content="Aura Rewards is the ultimate mobile app to earn real rewards, BGMI UC, and Free Fire Diamonds. Play games and win!">
-    <meta name="keywords" content="Aura Rewards, Earn Money, BGMI UC, Free Fire Diamonds, Cash Rewards">
-    <meta name="author" content="Aura Rewards Team">
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-deep: #030303;
+            --bg-dark: #020205;
             --accent-red: #FF003C;
-            --accent-orange: #FF8C00;
-            --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --nav-bg: rgba(3, 3, 3, 0.7);
-            --card-radius: 24px;
-            --btn-gradient: linear-gradient(135deg, #FF003C, #FF6600);
-            --font-main: 'Inter', sans-serif;
-            --font-heading: 'Space Grotesk', sans-serif;
+            --accent-gold: #FFD700;
+            --text-main: #FFFFFF;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #FF003C, #FF6600);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Ambient Background Effect */
-        .ambient-glow {
-            position: fixed;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 0, 60, 0.12), transparent 70%);
-            top: -200px;
-            left: -200px;
+        /* Ambient Lights */
+        .light-bg {
+            position: fixed; width: 100vw; height: 100vh;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(255, 0, 60, 0.1), transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(255, 140, 0, 0.08), transparent 40%);
             z-index: -1;
-            pointer-events: none;
-            filter: blur(100px);
-            animation: pulseGlow 10s infinite alternate;
-        }
-
-        .ambient-glow-2 {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.1), transparent 70%);
-            bottom: -100px;
-            right: -100px;
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(100px);
-            animation: pulseGlow 12s infinite alternate-reverse;
-        }
-
-        @keyframes pulseGlow {
-            to { transform: scale(1.1) translate(50px, 50px); opacity: 0.6; }
         }
 
         /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 80px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            padding: 1.5rem 10%;
+            display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10%;
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 100;
         }
+        .logo { font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; }
+        .logo span { color: var(--accent-red); }
 
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            background: var(--btn-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .cta-nav {
-            background: var(--btn-gradient);
-            padding: 10px 24px;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
-            transition: 0.3s;
-        }
-
-        .cta-nav:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.5);
-        }
-
-        /* Hero Section */
-        header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 120px 10% 80px;
-            max-width: 1400px;
+        /* Hero Section - No Phone Model */
+        .hero {
+            padding: 120px 10%;
+            text-align: center;
+            max-width: 1000px;
             margin: 0 auto;
         }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero-tag {
-            display: inline-block;
+        .v-badge {
             background: rgba(255, 0, 60, 0.1);
             color: var(--accent-red);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            border: 1px solid rgba(255, 0, 60, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 8px 20px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            display: inline-block; margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-family: 'Space Grotesk'; font-weight: 900;
+            line-height: 0.95; margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #fff 40%, #555);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.4rem; color: var(--text-dim);
+            max-width: 700px; margin: 0 auto 3rem;
         }
 
-        .hero-content h1 {
-            font-family: var(--font-heading);
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            font-weight: 700;
+        /* Premium Download Button */
+        .dl-container { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .btn-premium {
+            background: var(--gradient-primary);
+            color: #fff; text-decoration: none;
+            padding: 22px 50px; border-radius: 20px;
+            font-size: 1.2rem; font-weight: 800;
+            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.3);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; gap: 15px;
         }
+        .btn-premium:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 30px 60px rgba(255, 0, 60, 0.5); }
 
-        .hero-content h1 span {
-            display: block;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-primary {
-            background: var(--btn-gradient);
-            padding: 18px 40px;
-            border-radius: 16px;
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.25);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 30px 60px rgba(255, 0, 60, 0.4);
-        }
-
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            perspective: 2000px;
-        }
-
-        /* SUPER PREMIUM Pure CSS Phone Mockup */
-        .phone-mockup {
-            width: 340px;
-            height: 680px;
-            background: #080808;
-            border-radius: 48px;
-            padding: 14px;
-            border: 2px solid #222;
-            box-shadow: 
-                0 0 0 4px #111,
-                0 0 0 5px #222,
-                0 50px 100px rgba(0,0,0,0.9),
-                0 0 60px rgba(255, 0, 60, 0.15);
-            position: relative;
-            animation: floatMockup 8s ease-in-out infinite;
-            transform: rotateY(-15deg) rotateX(10deg);
-            transform-style: preserve-3d;
-        }
-
-        /* Glossy Reflection Overlay */
-        .phone-mockup::after {
-            content: '';
-            position: absolute;
-            top: 2%; left: 5%; width: 90%; height: 96%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
-            border-radius: 38px;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Light Leaks Behind Phone */
-        .light-leak {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 0, 60, 0.2), transparent 70%);
-            filter: blur(80px);
-            z-index: -1;
-            top: 10%; left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Interaction Buttons on Frame */
-        .phone-mockup .side-btn {
-            position: absolute;
-            left: -4px;
-            width: 4px;
-            height: 60px;
-            background: #222;
-            top: 140px;
-            border-radius: 2px 0 0 2px;
-        }
-        .phone-mockup .side-btn-2 { top: 220px; }
-        .phone-mockup .power-btn {
-            right: -4px;
-            width: 4px;
-            height: 80px;
-            background: #222;
-            top: 180px;
-            border-radius: 0 2px 2px 0;
-            left: auto;
-        }
-
-        @keyframes floatMockup {
-            0%, 100% { transform: rotateY(-15deg) rotateX(10deg) translateY(0); }
-            50% { transform: rotateY(-12deg) rotateX(5deg) translateY(-25px); }
-        }
-
-        .phone-top {
-            height: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .dynamic-island {
-            width: 80px;
-            height: 18px;
-            background: #000;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 0 10px;
-        }
-        .dynamic-island .camera { width: 6px; height: 6px; background: #111; border-radius: 50%; border: 1px solid #222;}
-
-        .phone-screen {
-            height: calc(100% - 32px);
-            background: #050505;
-            border-radius: 38px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            padding: 30px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-
-        .screen-header {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 30px;
-            text-align: center;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .balance-card {
-            background: linear-gradient(180deg, rgba(255, 0, 60, 0.05) 0%, transparent 100%);
-            border: 1px solid rgba(255, 0, 60, 0.2);
-            border-radius: 24px;
-            padding: 24px 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .balance-label { font-size: 0.65rem; color: #888; letter-spacing: 1px; margin-bottom: 5px; }
-        .balance-value { 
-            font-size: 2.2rem; 
-            font-weight: 900; 
-            background: linear-gradient(90deg, #ffffff, var(--accent-red));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-        }
-
-        /* Advanced Spin Wheel UI */
-        .wheel-container {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .wheel-glow {
-            position: absolute;
-            width: 220px; height: 220px;
-            background: radial-gradient(circle, rgba(255, 0, 60, 0.15), transparent 70%);
-            z-index: 1;
-        }
-
-        .wheel-outer {
-            width: 200px;
-            height: 200px;
-            background: conic-gradient(
-                #111 0deg 45deg, #181818 45deg 90deg, 
-                #111 90deg 135deg, #181818 135deg 180deg, 
-                #111 180deg 225deg, #181818 225deg 270deg, 
-                #111 270deg 315deg, #181818 315deg 360deg
-            );
-            border-radius: 50%;
-            border: 4px solid #222;
-            position: relative;
-            z-index: 2;
-            animation: spinWheel 20s linear infinite;
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
-        }
-
-        /* Slice markings */
-        .wheel-outer::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 0, 60, 0.3);
-            z-index: 3;
-        }
-
-        .wheel-pointer {
-            position: absolute;
-            top: -10px; left: 50%;
-            transform: translateX(-50%);
-            width: 25px; height: 30px;
-            background: var(--accent-red);
-            clip-path: polygon(50% 100%, 0 0, 100% 0);
-            z-index: 10;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 60, 0.8));
-        }
-
-        .spin-btn {
-            background: var(--btn-gradient);
-            padding: 16px;
-            border-radius: 18px;
-            text-align: center;
-            font-weight: 800;
-            font-family: var(--font-heading);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .screen-footer {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-around;
-            opacity: 0.4;
-        }
-        .nav-dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; }
-
-        /* Stats Section */
-        .stats {
-            padding: 0 10%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        .stat-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: var(--card-radius);
-            text-align: center;
-        }
-
-        .stat-card h2 {
-            font-size: 2.5rem;
-            color: var(--accent-red);
-            font-weight: 800;
-        }
-
-        .stat-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Features Bento Box */
+        /* Features Grid */
         .features {
-            padding: 100px 10%;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; padding: 100px 10%;
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
+        .f-card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 3rem; border-radius: 30px; transition: 0.4s;
         }
+        .f-card:hover { border-color: var(--accent-red); background: rgba(255, 255, 255, 0.05); }
+        .f-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent-gold); }
 
-        .section-header h2 {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            margin-bottom: 16px;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 300px);
-            gap: 24px;
-        }
-
-        .bento-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--card-radius);
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            transition: 0.4s;
-        }
-
-        .bento-item:hover {
-            border-color: rgba(255, 0, 60, 0.4);
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .bento-item:nth-child(1) { grid-column: span 2; }
-        .bento-item:nth-child(4) { grid-column: span 2; }
-
-        .bento-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            z-index: 1;
-        }
-
-        .bento-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            z-index: 1;
-        }
-
-        .bento-icon {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            font-size: 3rem;
-            opacity: 0.2;
-            transition: 0.4s;
-        }
-
-        .bento-item:hover .bento-icon {
-            transform: scale(1.2) rotate(-10deg);
-            opacity: 0.6;
-            color: var(--accent-red);
-        }
-
-        /* Rewards Gallery */
-        .rewards {
-            padding: 100px 10%;
-            background: linear-gradient(to bottom, transparent, rgba(255, 0, 60, 0.05), transparent);
-        }
-
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .reward-card {
-            background: #0a0a0a;
-            border: 1px solid var(--glass-border);
-            border-radius: var(--card-radius);
-            padding: 0;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .reward-card:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-red);
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
-        }
-
-        .reward-img {
-            height: 180px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .reward-info {
-            padding: 24px;
-            text-align: center;
-        }
-
-        .reward-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .reward-info p {
-            color: var(--accent-orange);
-            font-weight: 700;
-        }
-
-        /* Footer */
-        footer {
-            padding: 80px 10% 40px;
+        /* Trust Stats */
+        .stats-row {
+            display: flex; justify-content: space-around; flex-wrap: wrap;
+            padding: 60px 10%; background: rgba(255,255,255,0.02);
             border-top: 1px solid var(--glass-border);
-            text-align: center;
         }
+        .stat-item { text-align: center; padding: 20px; }
+        .stat-item h2 { font-size: 2.5rem; color: #fff; }
+        .stat-item p { color: var(--accent-red); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
 
-        .footer-logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
+        footer { padding: 80px 10%; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-red);
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.85rem;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 140px;
-            }
-            .hero-content h1 { font-size: 3.5rem; }
-            .hero-btns { justify-content: center; }
-            .hero-visual { margin-top: 60px; }
-            .bento-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-            .bento-item:nth-child(1), .bento-item:nth-child(4) { grid-column: span 1; }
-            .stats { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            .hero { padding: 80px 5%; }
+            .hero h1 { font-size: 3.5rem; }
+            .btn-premium { width: 100%; justify-content: center; font-size: 1rem; }
         }
     </style>
 </head>
 
 <body>
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow-2"></div>
+    <div class="light-bg"></div>
 
     <nav>
         <div class="logo">AURA<span>REWARDS</span></div>
-        <a href="#download" class="cta-nav">Download Now</a>
+        <div style="font-size: 0.8rem; opacity: 0.5;">OFFICIAL BUILD</div>
     </nav>
 
-    <header id="home">
-        <div class="hero-content">
-            <div class="hero-tag">Aura Rewards 2.0 is Here</div>
-            <h1><span>Play Games.</span> <span>Earn Rewards.</span></h1>
-            <p>Join over 1 million gamers turning their skills into real cash and game credits. The ultimate rewards app for serious players.</p>
-            <div class="hero-btns">
-                <a href="#download" class="btn-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/></svg>
-                    Download APK
-                </a>
+    <main class="hero">
+        <div class="v-badge">Version 11.0 Live</div>
+        <h1>Ultimate Gaming <span>Rewards.</span></h1>
+        <p>Turn your Free Fire & BGMI skills into real rewards. Play more, earn more, and dominate the leaderboard with Aura Rewards V11.</p>
+        
+        <div class="dl-container">
+            <a href="https://www.mediafire.com/file/ltxag55j5yzxatx/AuraReward+V11.apk/file" class="btn-premium">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/></svg>
+                DOWNLOAD V11 APK
+            </a>
+            <div style="display: flex; gap: 20px; font-size: 0.9rem; opacity: 0.7;">
+                <span>✓ 100% Virus Free</span>
+                <span>✓ No Root</span>
+                <span>✓ Instant Payout</span>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="light-leak"></div>
-            <div class="phone-mockup">
-                <div class="side-btn"></div>
-                <div class="side-btn-2"></div>
-                <div class="power-btn"></div>
-                <div class="phone-top">
-                    <div class="dynamic-island">
-                        <div class="camera"></div>
-                    </div>
-                </div>
-                <div class="phone-screen">
-                    <div class="screen-header">AURA 2.0</div>
-                    <div class="balance-card">
-                        <div class="balance-label">CURRENT BALANCE</div>
-                        <div class="balance-value">50,000</div>
-                    </div>
-                    <div class="wheel-container">
-                        <div class="wheel-glow"></div>
-                        <div class="wheel-pointer"></div>
-                        <div class="wheel-outer"></div>
-                    </div>
-                    <div class="spin-btn">SPIN WHEEL</div>
-                    <div class="screen-footer">
-                        <div class="nav-dot" style="opacity: 1; background: var(--accent-red);"></div>
-                        <div class="nav-dot"></div>
-                        <div class="nav-dot"></div>
-                        <div class="nav-dot"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    </main>
 
-    <section class="stats">
-        <div class="stat-card">
-            <h2>1M+</h2>
-            <p>Active Users</p>
+    <section class="stats-row">
+        <div class="stat-item"><h2>2M+</h2><p>Downloads</p></div>
+        <div class="stat-item"><h2>₹80L+</h2><p>Paid Out</p></div>
+        <div class="stat-item"><h2>4.9★</h2><p>Average Rating</p></div>
+    </section>
+
+    <section class="features">
+        <div class="f-card">
+            <h3>Play & Earn</h3>
+            <p>Direct integration with your favorite games. Earn coins while you rank up in matches.</p>
         </div>
-        <div class="stat-card">
-            <h2>₹50L+</h2>
-            <p>Paid Out</p>
+        <div class="f-card">
+            <h3>Instant Redeem</h3>
+            <p>Withdraw your rewards as Diamonds, UC, or Cash instantly. No long waiting times.</p>
         </div>
-        <div class="stat-card">
-            <h2>4.8 ★</h2>
-            <p>App Rating</p>
+        <div class="f-card">
+            <h3>Secure Build</h3>
+            <p>Our V11 engine is optimized for itel, Samsung, and all budget Android devices.</p>
         </div>
     </section>
 
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Why Choose Aura?</h2>
-            <p>Modern features designed for gamers.</p>
-        </div>
-        <div class="bento-grid">
-            <div class="bento-item">
-                <div class="bento-icon">🎮</div>
-                <h3>Daily Missions</h3>
-                <p>Complete simple missions every day like playing mini-games or spinning the wheel to rack up coins quickly.</p>
-            </div>
-            <div class="bento-item">
-                <div class="bento-icon">🎡</div>
-                <h3>Spin & Win</h3>
-                <p>Test your luck with the Neon Spin Wheel. Big coin prizes waiting for you every single day.</p>
-            </div>
-            <div class="bento-item">
-                <div class="bento-icon">💎</div>
-                <h3>Fast Redemption</h3>
-                <p>Withdraw your earnings directly to UPI, Google Play codes, or Game Credits within 24 hours.</p>
-            </div>
-            <div class="bento-item">
-                <div class="bento-icon">🎯</div>
-                <h3>Flash Store</h3>
-                <p>Exclusive 50% Off deals on Google Play and Free Fire Redeem Codes. For Aura members only.</p>
-            </div>
-            <div class="bento-item">
-                <div class="bento-icon">🔒</div>
-                <h3>Safe & Secure</h3>
-                <p>No login required for most features. Your data and earnings are always protected with advanced encryption.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="rewards" id="rewards">
-        <div class="section-header">
-            <h2>Claim Your Rewards</h2>
-        </div>
-        <div class="rewards-grid">
-            <div class="reward-card">
-                <div class="reward-img">🎮</div>
-                <div class="reward-info">
-                    <h4>BGMI UC</h4>
-                    <p>60 UC to 600 UC Packs</p>
-                </div>
-            </div>
-            <div class="reward-card">
-                <div class="reward-img">🔥</div>
-                <div class="reward-info">
-                    <h4>Free Fire Diamonds</h4>
-                    <p>100D to 1000D Packs</p>
-                </div>
-            </div>
-            <div class="reward-card">
-                <div class="reward-img">💸</div>
-                <div class="reward-info">
-                    <h4>Google Play</h4>
-                    <p>₹10, ₹50, ₹100 Vouchers</p>
-                </div>
-            </div>
-            <div class="reward-card">
-                <div class="reward-img">🏦</div>
-                <div class="reward-info">
-                    <h4>Paytm/UPI</h4>
-                    <p>Direct Cash Withdrawals</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="download">
-        <div class="footer-logo">AURA<span>REWARDS</span></div>
-        <div class="hero-btns" style="justify-content: center; margin-bottom: 40px;">
-            <a href="#" class="btn-primary">Get the App Now</a>
-        </div>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Telegram</a>
-        </div>
-        <p class="copyright">&copy; 2026 Aura Rewards. All Rights Reserved.</p>
+    <footer>
+        <div style="margin-bottom: 20px; font-weight: 700; color: #fff; font-size: 1.5rem;">AURA<span>REWARDS</span></div>
+        <p>&copy; 2026 Aura Rewards Team. All Rights Reserved. Built for Pro Gamers.</p>
     </footer>
 
-    <script>
-        // Smooth reveal on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.bento-item, .reward-card, .stat-card').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(30px)";
-            el.style.transition = "0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-            observer.observe(el);
-        });
-    </script>
 </body>
-
 </html>
