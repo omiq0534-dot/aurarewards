@@ -4,68 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Rewards | Play Games. Earn Coins. Get Real Rewards.</title>
+    <title>Aura Rewards | Play. Earn. Elevate.</title>
     
     <!-- Professional SEO Meta Tags -->
-    <meta name="description" content="Aura Rewards is the ultimate mobile app to earn real rewards, BGMI UC, and Free Fire Diamonds by playing games, completing simple tasks, and participating in daily tournaments.">
-    <meta name="keywords" content="Aura Rewards, Earn Money, Play Games, BGMI UC, Free Fire Diamonds, Cash Rewards, Rewards App, Mobile Gaming, Earn Coins">
+    <meta name="description" content="Aura Rewards is the ultimate mobile app to earn real rewards, BGMI UC, and Free Fire Diamonds. Play games and win!">
+    <meta name="keywords" content="Aura Rewards, Earn Money, BGMI UC, Free Fire Diamonds, Cash Rewards">
     <meta name="author" content="Aura Rewards Team">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://your-github-username.github.io/your-repo-name/">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-github-username.github.io/your-repo-name/">
-    <meta property="og:title" content="Aura Rewards | Play Games. Earn Coins. Get Real Rewards.">
-    <meta property="og:description" content="Join Aura Rewards and turn your gaming skills into real rewards. Play BGMI, Free Fire, and more to win!">
-    <meta property="og:image" content="https://raw.githubusercontent.com/your-github-username/your-repo-name/main/assets/preview.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://your-github-username.github.io/your-repo-name/">
-    <meta property="twitter:title" content="Aura Rewards | Play Games. Earn Coins. Get Real Rewards.">
-    <meta property="twitter:description" content="Join Aura Rewards and turn your gaming skills into real rewards. Play BGMI, Free Fire, and more to win!">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/your-github-username/your-repo-name/main/assets/preview.png">
-
-    <!-- Schema.org JSON-LD (Structured Data for Google) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Aura Rewards",
-      "operatingSystem": "ANDROID",
-      "applicationCategory": "GameApplication",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    }
-    </script>
-
-    <!-- Google Fonts for Modern Typography -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #05050A;
-            --bg-mesh: url('assets/aura_2_0_bg.png');
-            --neon-red: #FF003C;
-            --flame-orange: #FF8C00;
-            --neon-glow: rgba(255, 0, 60, 0.3);
+            --bg-deep: #030303;
+            --accent-red: #FF003C;
+            --accent-orange: #FF8C00;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
             --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --button-gradient: linear-gradient(135deg, #FF003C, #FF8C00);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --nav-bg: rgba(3, 3, 3, 0.7);
+            --card-radius: 24px;
+            --btn-gradient: linear-gradient(135deg, #FF003C, #FF6600);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
         }
 
         * {
@@ -74,929 +38,781 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            background-image: var(--bg-mesh);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Animated Stars Background */
-        .stars {
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Background Effect */
+        .ambient-glow {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.12), transparent 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(100px);
+            animation: pulseGlow 10s infinite alternate;
+        }
+
+        .ambient-glow-2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.1), transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(100px);
+            animation: pulseGlow 12s infinite alternate-reverse;
+        }
+
+        @keyframes pulseGlow {
+            to { transform: scale(1.1) translate(50px, 50px); opacity: 0.6; }
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background:
-                transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><circle cx="50" cy="50" r="1.5" fill="%23fff" opacity="0.8"/><circle cx="200" cy="150" r="2" fill="%23fff" opacity="0.6"/><circle cx="100" cy="250" r="1.2" fill="%23fff" opacity="0.9"/><circle cx="280" cy="80" r="0.8" fill="%23fff" opacity="0.5"/><circle cx="20" cy="280" r="2.5" fill="%23FF003C" opacity="0.7"/><circle cx="250" cy="260" r="1" fill="%23FF8C00" opacity="0.8"/></svg>') repeat;
-            animation: moveStars 80s linear infinite;
-            opacity: 0.4;
-        }
-
-        @keyframes moveStars {
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: -1000px 500px;
-            }
-        }
-
-        /* Nebula Glow */
-        .nebula {
-            position: fixed;
-            width: 60vw;
-            height: 60vw;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: 0;
-            opacity: 0.3;
-            pointer-events: none;
-            animation: pulseNebula 8s ease-in-out infinite alternate;
-        }
-
-        .nebula-1 {
-            top: -10%;
-            left: -10%;
-            background: radial-gradient(circle, var(--neon-red), transparent 70%);
-        }
-
-        .nebula-2 {
-            bottom: -10%;
-            right: -10%;
-            background: radial-gradient(circle, var(--flame-orange), transparent 70%);
-            animation-duration: 12s;
-        }
-
-        @keyframes pulseNebula {
-            0% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-
-            100% {
-                transform: scale(1.1);
-                opacity: 0.4;
-            }
-        }
-
-        /* Main Container */
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            flex-grow: 1;
+            height: 80px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            width: 100%;
-        }
-
-        /* Navbar */
-        nav {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem 0;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            justify-content: space-between;
+            padding: 0 10%;
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #ffffff, var(--neon-red));
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            background: var(--btn-gradient);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
-        .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--button-gradient);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
-            position: relative;
+        .cta-nav {
+            background: var(--btn-gradient);
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+            transition: 0.3s;
         }
 
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            border: 1px solid var(--neon-red);
-            opacity: 0.5;
-            animation: pulseIconBorder 2s infinite;
-        }
-
-        @keyframes pulseIconBorder {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.5);
         }
 
         /* Hero Section */
-        .hero {
-            text-align: center;
-            margin: 4rem 0 3rem;
-            position: relative;
-            animation: zoomIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 100%;
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 10% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
         }
 
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 800;
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 0, 60, 0.1);
+            color: var(--accent-red);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
-            background: linear-gradient(to bottom, #ffffff 40%, var(--neon-red) 100%);
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            display: block;
+            background: linear-gradient(to right, #fff, #888);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 25px rgba(255, 0, 60, 0.4));
-            animation: floatText 5s ease-in-out infinite;
         }
 
-        .hero p {
-            font-size: 1.6rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 3rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
         }
 
-        @keyframes floatText {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
         }
 
-        /* Download Section */
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 1.2rem 3rem;
-            font-size: 1.3rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: #fff;
+        .btn-primary {
+            background: var(--btn-gradient);
+            padding: 18px 40px;
+            border-radius: 16px;
+            color: white;
             text-decoration: none;
-            background: var(--button-gradient);
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 25px rgba(255, 0, 60, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 1.5px;
-            z-index: 2;
-            cursor: pointer;
-        }
-
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s ease;
-            transform: skewX(-20deg);
-        }
-
-        .download-btn:hover {
-            transform: scale(1.05) translateY(-3px);
-            background: var(--button-gradient);
-            border-color: #ffffff;
-            box-shadow: 0 0 35px rgba(255, 0, 60, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-        }
-
-        .download-btn:hover::before {
-            left: 150%;
-        }
-
-        .download-icon {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-            animation: bounceIcon 2s infinite;
-        }
-
-        @keyframes bounceIcon {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-5px);
-            }
-
-            60% {
-                transform: translateY(-3px);
-            }
-        }
-
-        .pulse-ring {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50px;
-            z-index: -1;
-            animation: pulseRing 2.5s infinite;
-            border: 2px solid var(--neon-red);
-            pointer-events: none;
-        }
-
-        .download-btn:hover .pulse-ring {
-            border-color: var(--flame-orange);
-            animation: pulseRingGold 2.5s infinite;
-        }
-
-        @keyframes pulseRing {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translate(-50%, -50%) scale(1.3);
-                opacity: 0;
-            }
-        }
-
-        @keyframes pulseRingGold {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translate(-50%, -50%) scale(1.3);
-                opacity: 0;
-            }
-        }
-
-        /* Trust Badge */
-        .trust-badge-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 2.5rem;
-            animation: fadeInUp 1.2s ease-out;
-            width: 100%;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .trust-badge {
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.25);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--neon-red);
-            font-size: 0.95rem;
-            font-weight: 600;
-            background: rgba(255, 0, 60, 0.05);
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 0, 60, 0.2);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            flex-wrap: wrap;
-            /* Ensure text wraps cleanly */
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 30px 60px rgba(255, 0, 60, 0.4);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
             justify-content: center;
-        }
-
-        .trust-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
-        }
-
-        .trust-divider {
-            color: rgba(255, 255, 255, 0.2);
-            margin: 0 5px;
-        }
-
-        /* Features Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin: 4rem 0 5rem;
-            width: 100%;
-            perspective: 1200px;
-        }
-
-        .feature-item-wrapper {
             position: relative;
-            animation: fadeUpIn 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
+            perspective: 2000px;
         }
 
-        .feature-item-wrapper:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .feature-item-wrapper:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .feature-item-wrapper:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes fadeUpIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            border-right: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* SUPER PREMIUM Pure CSS Phone Mockup */
+        .phone-mockup {
+            width: 340px;
+            height: 680px;
+            background: #080808;
+            border-radius: 48px;
+            padding: 14px;
+            border: 2px solid #222;
+            box-shadow: 
+                0 0 0 4px #111,
+                0 0 0 5px #222,
+                0 50px 100px rgba(0,0,0,0.9),
+                0 0 60px rgba(255, 0, 60, 0.15);
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            height: 100%;
+            animation: floatMockup 8s ease-in-out infinite;
+            transform: rotateY(-15deg) rotateX(10deg);
             transform-style: preserve-3d;
-            animation: floatCard 6s ease-in-out infinite;
         }
 
-        .glass-card:nth-child(2) {
-            animation-delay: 1.5s;
-        }
-
-        .glass-card:nth-child(3) {
-            animation-delay: 3s;
-        }
-
-        .glass-card::before {
+        /* Glossy Reflection Overlay */
+        .phone-mockup::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            top: 2%; left: 5%; width: 90%; height: 96%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
+            border-radius: 38px;
             pointer-events: none;
-        }
-
-        .feature-item-wrapper:hover .glass-card {
-            transform: translateY(-20px) rotateX(5deg) scale(1.02);
-            border-color: rgba(255, 215, 0, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--glass-glow);
             z-index: 10;
         }
 
-        .feature-item-wrapper:hover .glass-card::before {
-            opacity: 1;
-        }
-
-        /* Dynamic Border Highlight */
-        .card-highlight {
+        /* Light Leaks Behind Phone */
+        .light-leak {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            border: 2px solid transparent;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-primary)) border-box;
-            -webkit-mask:
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask: 
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.2), transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            top: 10%; left: 50%;
+            transform: translateX(-50%);
         }
 
-        .feature-item-wrapper:hover .card-highlight {
-            opacity: 1;
-            background: linear-gradient(135deg, var(--neon-red), var(--flame-orange)) border-box;
+        /* Interaction Buttons on Frame */
+        .phone-mockup .side-btn {
+            position: absolute;
+            left: -4px;
+            width: 4px;
+            height: 60px;
+            background: #222;
+            top: 140px;
+            border-radius: 2px 0 0 2px;
         }
-
-        .card-icon {
-            width: 80px;
+        .phone-mockup .side-btn-2 { top: 220px; }
+        .phone-mockup .power-btn {
+            right: -4px;
+            width: 4px;
             height: 80px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(0, 245, 255, 0.15));
-            border-radius: 50%;
+            background: #222;
+            top: 180px;
+            border-radius: 0 2px 2px 0;
+            left: auto;
+        }
+
+        @keyframes floatMockup {
+            0%, 100% { transform: rotateY(-15deg) rotateX(10deg) translateY(0); }
+            50% { transform: rotateY(-12deg) rotateX(5deg) translateY(-25px); }
+        }
+
+        .phone-top {
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .dynamic-island {
+            width: 80px;
+            height: 18px;
+            background: #000;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+        .dynamic-island .camera { width: 6px; height: 6px; background: #111; border-radius: 50%; border: 1px solid #222;}
+
+        .phone-screen {
+            height: calc(100% - 32px);
+            background: #050505;
+            border-radius: 38px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .screen-header {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .balance-card {
+            background: linear-gradient(180deg, rgba(255, 0, 60, 0.05) 0%, transparent 100%);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            border-radius: 24px;
+            padding: 24px 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .balance-label { font-size: 0.65rem; color: #888; letter-spacing: 1px; margin-bottom: 5px; }
+        .balance-value { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            background: linear-gradient(90deg, #ffffff, var(--accent-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+
+        /* Advanced Spin Wheel UI */
+        .wheel-container {
+            flex-grow: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s ease;
-            transform: translateZ(30px);
+            margin-bottom: 30px;
         }
 
-        .feature-item-wrapper:hover .card-icon {
-            transform: translateZ(40px) scale(1.1);
+        .wheel-glow {
+            position: absolute;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.15), transparent 70%);
+            z-index: 1;
         }
 
-        .card-icon::after {
+        .wheel-outer {
+            width: 200px;
+            height: 200px;
+            background: conic-gradient(
+                #111 0deg 45deg, #181818 45deg 90deg, 
+                #111 90deg 135deg, #181818 135deg 180deg, 
+                #111 180deg 225deg, #181818 225deg 270deg, 
+                #111 270deg 315deg, #181818 315deg 360deg
+            );
+            border-radius: 50%;
+            border: 4px solid #222;
+            position: relative;
+            z-index: 2;
+            animation: spinWheel 20s linear infinite;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        /* Slice markings */
+        .wheel-outer::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
             border-radius: 50%;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            box-sizing: border-box;
-            animation: rotateDashed 10s linear infinite;
+            border: 2px solid rgba(255, 0, 60, 0.3);
+            z-index: 3;
         }
 
-        .feature-item-wrapper:hover .card-icon::after {
-            border-color: var(--neon-red);
-            animation-duration: 4s;
+        .wheel-pointer {
+            position: absolute;
+            top: -10px; left: 50%;
+            transform: translateX(-50%);
+            width: 25px; height: 30px;
+            background: var(--accent-red);
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            z-index: 10;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 60, 0.8));
         }
 
-        @keyframes rotateDashed {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .spin-btn {
+            background: var(--btn-gradient);
+            padding: 16px;
+            border-radius: 18px;
+            text-align: center;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .card-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: #fff;
-            stroke-width: 1.5;
-            fill: none;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-            transition: stroke 0.3s ease;
+        .screen-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            opacity: 0.4;
+        }
+        .nav-dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+
+        /* Stats Section */
+        .stats {
+            padding: 0 10%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
         }
 
-        .feature-item-wrapper:hover .card-icon svg {
-            stroke: var(--neon-red);
-            filter: drop-shadow(0 0 12px var(--neon-red));
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: var(--card-radius);
+            text-align: center;
         }
 
-        .glass-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-main);
+        .stat-card h2 {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            font-weight: 800;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transform: translateZ(20px);
-            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
         }
 
-        .feature-item-wrapper:hover h3 {
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 0, 60, 0.8);
+        /* Features Bento Box */
+        .features {
+            padding: 100px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .glass-card p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            transform: translateZ(10px);
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        @keyframes floatCard {
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 24px;
+        }
 
-            50% {
-                transform: translateY(-10px);
-            }
+        .bento-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.4s;
+        }
+
+        .bento-item:hover {
+            border-color: rgba(255, 0, 60, 0.4);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .bento-item:nth-child(1) { grid-column: span 2; }
+        .bento-item:nth-child(4) { grid-column: span 2; }
+
+        .bento-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            z-index: 1;
+        }
+
+        .bento-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            z-index: 1;
+        }
+
+        .bento-icon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 3rem;
+            opacity: 0.2;
+            transition: 0.4s;
+        }
+
+        .bento-item:hover .bento-icon {
+            transform: scale(1.2) rotate(-10deg);
+            opacity: 0.6;
+            color: var(--accent-red);
+        }
+
+        /* Rewards Gallery */
+        .rewards {
+            padding: 100px 10%;
+            background: linear-gradient(to bottom, transparent, rgba(255, 0, 60, 0.05), transparent);
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .reward-card {
+            background: #0a0a0a;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--card-radius);
+            padding: 0;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .reward-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
+        }
+
+        .reward-img {
+            height: 180px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .reward-info {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .reward-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .reward-info p {
+            color: var(--accent-orange);
+            font-weight: 700;
         }
 
         /* Footer */
         footer {
-            margin-top: auto;
-            width: 100%;
+            padding: 80px 10% 40px;
+            border-top: 1px solid var(--glass-border);
             text-align: center;
-            padding: 2.5rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: linear-gradient(to top, rgba(5, 1, 11, 0.9), transparent);
-            z-index: 1;
-            position: relative;
         }
 
-        .privacy-link {
-            color: var(--text-muted);
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-bottom: 5px;
+            transition: 0.3s;
         }
 
-        .privacy-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: var(--neon-red);
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px var(--neon-red);
+        .footer-links a:hover {
+            color: var(--accent-red);
         }
 
-        .privacy-link:hover {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+        .copyright {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
         }
 
-        .privacy-link:hover::after {
-            width: 100%;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 4.5rem;
-            }
-
-            .features {
-                gap: 1.5rem;
-            }
-
-            .glass-card {
-                padding: 2.5rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 850px) {
-            .hero h1 {
-                font-size: 3.8rem;
-            }
-
-            .features {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-
-            .hero p {
-                font-size: 1.3rem;
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem 1.5rem;
-            }
-
-            .hero {
-                margin: 2.5rem 0;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero p {
-                font-size: 1.15rem;
-                margin-bottom: 2.5rem;
-                padding: 0;
-            }
-
-            .download-btn {
-                padding: 1rem 1.8rem;
-                font-size: 1.1rem;
-                width: 100%;
-                max-width: 350px;
-                white-space: normal;
-                text-align: center;
-            }
-
-            .trust-badge {
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            header {
                 flex-direction: column;
                 text-align: center;
-                gap: 8px;
-                padding: 1rem;
-                font-size: 0.85rem;
+                padding-top: 140px;
             }
-
-            .trust-divider {
-                display: none;
-            }
-
-            .features {
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-btns { justify-content: center; }
+            .hero-visual { margin-top: 60px; }
+            .bento-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-                margin: 3rem 0;
+                grid-template-rows: auto;
             }
-
-            /* Reduce 3D effect on mobile for better touch experience */
-            .feature-item-wrapper:hover .glass-card {
-                transform: translateY(-10px);
-            }
-
-            .card-icon {
-                width: 70px;
-                height: 70px;
-            }
-
-            .glass-card h3 {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Specific tweaks for itel A50 screen size (around 360px width) */
-        @media (max-width: 400px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .logo {
-                font-size: 1.6rem;
-                color: #ffffff;
-            }
-
-            .download-btn {
-                font-size: 0.95rem;
-                padding: 1rem 1.2rem;
-            }
-
-            .glass-card {
-                padding: 2rem 1.2rem;
-            }
-
-            nav {
-                padding: 1rem 0;
-            }
+            .bento-item:nth-child(1), .bento-item:nth-child(4) { grid-column: span 1; }
+            .stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 
 <body>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
 
-    <!-- Background Elements -->
-    <div class="stars"></div>
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
+    <nav>
+        <div class="logo">AURA<span>REWARDS</span></div>
+        <a href="#download" class="cta-nav">Download Now</a>
+    </nav>
 
-    <div class="container">
-        <!-- Navigation -->
-        <nav>
-            <div class="logo">
-                <div class="logo-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#050510" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 22 22 22"></polygon>
-                        <path d="M12 2v20"></path>
-                    </svg>
-                </div>
-                Aura Rewards
-            </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <main class="hero">
-            <h1>Aura Rewards</h1>
-            <p>Play Games. Earn Coins. Get Rewards.</p>
-
-            <div style="position: relative; display: inline-block; width: 100%; max-width: 400px;">
-                <div class="pulse-ring"></div>
-                <!-- Placeholder Link for Mediafire -->
-                <a href="https://www.mediafire.com/file/q3d620om6luqiw2/Aura+Reward+2.0.apk/file" class="download-btn"
-                    target="_blank" rel="noopener noreferrer">
-                    <svg class="download-icon" viewBox="0 0 24 24">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    <span>DOWNLOAD AURA REWARDS 2.0</span>
+    <header id="home">
+        <div class="hero-content">
+            <div class="hero-tag">Aura Rewards 2.0 is Here</div>
+            <h1><span>Play Games.</span> <span>Earn Rewards.</span></h1>
+            <p>Join over 1 million gamers turning their skills into real cash and game credits. The ultimate rewards app for serious players.</p>
+            <div class="hero-btns">
+                <a href="#download" class="btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/></svg>
+                    Download APK
                 </a>
             </div>
-
-            <div class="trust-badge-container">
-                <div class="trust-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        <path d="M9 12l2 2 4-4" stroke="#05010b" stroke-width="3" stroke-linecap="round"
-                            stroke-linejoin="round" fill="none"></path>
-                    </svg>
-                    <span>100% Safe</span>
-                    <span class="trust-divider">|</span>
-                    <span>Official Developer Build</span>
-                    <span class="trust-divider">|</span>
-                    <span>No Viruses</span>
-                </div>
-            </div>
-        </main>
-
-        <!-- Features Section -->
-        <section class="features">
-            <!-- Feature 1 -->
-            <div class="feature-item-wrapper">
-                <div class="glass-card">
-                    <div class="card-highlight"></div>
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
+        </div>
+        <div class="hero-visual">
+            <div class="light-leak"></div>
+            <div class="phone-mockup">
+                <div class="side-btn"></div>
+                <div class="side-btn-2"></div>
+                <div class="power-btn"></div>
+                <div class="phone-top">
+                    <div class="dynamic-island">
+                        <div class="camera"></div>
                     </div>
-                    <h3>Neon Spin</h3>
-                    <p>Spin the high-fidelity neon wheel to win up to 500 coins every day. It's fast, fun, and highly rewarding!</p>
                 </div>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="feature-item-wrapper">
-                <div class="glass-card">
-                    <div class="card-highlight"></div>
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" stroke="currentColor">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="3" y1="9" x2="21" y2="9"></line>
-                            <line x1="9" y1="21" x2="9" y2="9"></line>
-                        </svg>
+                <div class="phone-screen">
+                    <div class="screen-header">AURA 2.0</div>
+                    <div class="balance-card">
+                        <div class="balance-label">CURRENT BALANCE</div>
+                        <div class="balance-value">50,000</div>
                     </div>
-                    <h3>Lucky Scratch</h3>
-                    <p>Reveal hidden treasures behind our premium 3D scratch cards. Test your luck and boost your balance.</p>
-                </div>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="feature-item-wrapper">
-                <div class="glass-card">
-                    <div class="card-highlight"></div>
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                        </svg>
+                    <div class="wheel-container">
+                        <div class="wheel-glow"></div>
+                        <div class="wheel-pointer"></div>
+                        <div class="wheel-outer"></div>
                     </div>
-                    <h3>Aura Chest</h3>
-                    <p>Open daily mission chests and premium loot boxes. Every chest is packed with surprises for our top players.</p>
+                    <div class="spin-btn">SPIN WHEEL</div>
+                    <div class="screen-footer">
+                        <div class="nav-dot" style="opacity: 1; background: var(--accent-red);"></div>
+                        <div class="nav-dot"></div>
+                        <div class="nav-dot"></div>
+                        <div class="nav-dot"></div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- How It Works Section (SEO Boost) -->
-        <section style="margin: 3rem 0; width: 100%; text-align: center;">
-            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(90deg, #fff, var(--neon-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Experience Aura 2.0</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; color: var(--text-muted);">
-                <div>
-                    <h4 style="color: var(--neon-red); margin-bottom: 0.5rem;">1. Install Aura 2.0</h4>
-                    <p>Download the high-fidelity APK and experience the all-new dark mode UI.</p>
-                </div>
-                <div>
-                    <h4 style="color: var(--neon-red); margin-bottom: 0.5rem;">2. High-Yield Tasks</h4>
-                    <p>Participate in premium tournaments and complete high-yield missions.</p>
-                </div>
-                <div>
-                    <h4 style="color: var(--neon-red); margin-bottom: 0.5rem;">3. Secure Withdrawals</h4>
-                    <p>Exchange your coins for UC, Diamonds, or UPI cashouts instantly.</p>
+    <section class="stats">
+        <div class="stat-card">
+            <h2>1M+</h2>
+            <p>Active Users</p>
+        </div>
+        <div class="stat-card">
+            <h2>₹50L+</h2>
+            <p>Paid Out</p>
+        </div>
+        <div class="stat-card">
+            <h2>4.8 ★</h2>
+            <p>App Rating</p>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Choose Aura?</h2>
+            <p>Modern features designed for gamers.</p>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-item">
+                <div class="bento-icon">🎮</div>
+                <h3>Daily Missions</h3>
+                <p>Complete simple missions every day like playing mini-games or spinning the wheel to rack up coins quickly.</p>
+            </div>
+            <div class="bento-item">
+                <div class="bento-icon">🎡</div>
+                <h3>Spin & Win</h3>
+                <p>Test your luck with the Neon Spin Wheel. Big coin prizes waiting for you every single day.</p>
+            </div>
+            <div class="bento-item">
+                <div class="bento-icon">💎</div>
+                <h3>Fast Redemption</h3>
+                <p>Withdraw your earnings directly to UPI, Google Play codes, or Game Credits within 24 hours.</p>
+            </div>
+            <div class="bento-item">
+                <div class="bento-icon">🎯</div>
+                <h3>Flash Store</h3>
+                <p>Exclusive 50% Off deals on Google Play and Free Fire Redeem Codes. For Aura members only.</p>
+            </div>
+            <div class="bento-item">
+                <div class="bento-icon">🔒</div>
+                <h3>Safe & Secure</h3>
+                <p>No login required for most features. Your data and earnings are always protected with advanced encryption.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rewards" id="rewards">
+        <div class="section-header">
+            <h2>Claim Your Rewards</h2>
+        </div>
+        <div class="rewards-grid">
+            <div class="reward-card">
+                <div class="reward-img">🎮</div>
+                <div class="reward-info">
+                    <h4>BGMI UC</h4>
+                    <p>60 UC to 600 UC Packs</p>
                 </div>
             </div>
-        </section>
+            <div class="reward-card">
+                <div class="reward-img">🔥</div>
+                <div class="reward-info">
+                    <h4>Free Fire Diamonds</h4>
+                    <p>100D to 1000D Packs</p>
+                </div>
+            </div>
+            <div class="reward-card">
+                <div class="reward-img">💸</div>
+                <div class="reward-info">
+                    <h4>Google Play</h4>
+                    <p>₹10, ₹50, ₹100 Vouchers</p>
+                </div>
+            </div>
+            <div class="reward-card">
+                <div class="reward-img">🏦</div>
+                <div class="reward-info">
+                    <h4>Paytm/UPI</h4>
+                    <p>Direct Cash Withdrawals</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <a href="#privacy-policy" class="privacy-link">Privacy Policy</a>
+    <footer id="download">
+        <div class="footer-logo">AURA<span>REWARDS</span></div>
+        <div class="hero-btns" style="justify-content: center; margin-bottom: 40px;">
+            <a href="#" class="btn-primary">Get the App Now</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Telegram</a>
+        </div>
+        <p class="copyright">&copy; 2026 Aura Rewards. All Rights Reserved.</p>
     </footer>
 
-    <!-- Script for 3D Tilt Effect on Desktop -->
     <script>
-        // Only apply 3D tilt on devices that support hover (desktop)
-        if (window.matchMedia("(hover: hover)").matches) {
-            document.querySelectorAll('.glass-card').forEach(card => {
-                const wrapper = card.closest('.feature-item-wrapper');
-                if (!wrapper) return;
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-                wrapper.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    // Reduced effect for subtle smooth behavior
-                    const rotateX = ((y - centerY) / centerY) * -6;
-                    const rotateY = ((x - centerX) / centerX) * 6;
-
-                    card.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-                });
-
-                wrapper.addEventListener('mouseleave', () => {
-                    card.style.transform = ''; // return to original CSS state
-                });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
             });
-        }
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-item, .reward-card, .stat-card').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+            observer.observe(el);
+        });
     </script>
 </body>
 
